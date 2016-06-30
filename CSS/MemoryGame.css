@@ -1,0 +1,9 @@
+.card{
+    border:1px black solid;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    background-image: url("../images/HarryPotterBackGame.JPG");
+    background-size: cover;
+
+}

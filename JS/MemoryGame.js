@@ -3,6 +3,7 @@
  */
 var firstCard = null;
 var count = 0;
+var pause = false;
 
 var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./images/Jewerine.jpg","./images/jewish-rock.jpg","./images/jokejewish.jpg","./images/Yanouka.jpg"];
 
@@ -19,6 +20,7 @@ var createBoard = function(){
             card.setAttribute("data-img", imagesFlow[4*i+j]);
             columnCube.appendChild(card);
             card.addEventListener('click',changeCard);
+
         }
     }
 };
@@ -50,7 +52,10 @@ var showCard = function(card){
 
 var changeCard = function(clickEvent){
     var clickedCard = clickEvent.target;
-    showCard(clickedCard);
+    if (pause === false){
+        showCard(clickedCard);
+    }
+
     if(firstCard == null){
         firstCard = clickedCard;
     }else{
@@ -68,17 +73,20 @@ var changeCard = function(clickEvent){
                    location.reload();
                }
 
-               
+
 
                // alert("You have won");
            }
 
        }else{
+           pause=true;
            setTimeout(function(){
                clickedCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
                firstCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
                firstCard = null;
+               pause=false;
            },1000);
+
        }
 
 

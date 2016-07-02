@@ -17,24 +17,26 @@ var createBoard = function(){
             var card = document.createElement('div');
             card.className = "card";
             card.setAttribute("data-img", imagesFlow[4*i+j]);
-            // var first=document.getElementsByClassName("card")[i];
-            // var hilly = document.createAttribute("dataImg");
-            // hilly.value ="./images/Groucho-Marx-001.jpg";
-            // // first.setAttributeNode(hilly);
-            // hilly.value = imagesFlow[i];
             columnCube.appendChild(card);
             card.addEventListener('click',changeCard);
         }
     }
-}
-
-
+};
 
 
 window.onload = function(){
     var boardFrame = document.createElement('div');
     boardFrame.id = "bestBoardFrame";
     document.body.appendChild(boardFrame);
+    // for(var i=0;i<imagesFlow.length;i++){
+    //     imagesFlow.push(imagesFlow[i]);
+    // }
+    for (var j = imagesFlow.length -1; j >= 0; j--){
+        var k = Math.floor(Math.random()*(j+1));
+        var temp = imagesFlow[j];
+        imagesFlow[j] = imagesFlow[k];
+        imagesFlow[k] = temp;
+    }
     createBoard();
 
 };
@@ -54,8 +56,20 @@ var changeCard = function(clickEvent){
        if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")){
            count = count +2;
            firstCard = null;
-           if (count === 12){
-               alert("You have won");
+           if (count === 2){
+
+               var overlay = document.createElement('div');
+               overlay.className = "overlay";
+               overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>"
+               var boardFrame = document.getElementById("bestBoardFrame");
+               boardFrame.appendChild(overlay);
+               document.getElementById('replay').onclick = function(){
+                   location.reload();
+               }
+
+               
+
+               // alert("You have won");
            }
 
        }else{

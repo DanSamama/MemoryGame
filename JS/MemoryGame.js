@@ -4,7 +4,7 @@
 var firstCard = null;
 var count = 0;
 
-var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./images/Jewerine.jpg","./images/jewish-rock.jpg","./images/jokejewish.jpg","./images/Yanouka.jpg","./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./images/Jewerine.jpg","./images/jewish-rock.jpg","./images/jokejewish.jpg","./images/Yanouka.jpg"];
+var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./images/Jewerine.jpg","./images/jewish-rock.jpg","./images/jokejewish.jpg","./images/Yanouka.jpg"];
 
 
 var createBoard = function(){
@@ -28,9 +28,10 @@ window.onload = function(){
     var boardFrame = document.createElement('div');
     boardFrame.id = "bestBoardFrame";
     document.body.appendChild(boardFrame);
-    // for(var i=0;i<imagesFlow.length;i++){
-    //     imagesFlow.push(imagesFlow[i]);
-    // }
+    var imagesFlowLength = imagesFlow.length;
+    for(var i=0;i<imagesFlowLength;i++){
+        imagesFlow.push(imagesFlow[i]);
+    }
     for (var j = imagesFlow.length -1; j >= 0; j--){
         var k = Math.floor(Math.random()*(j+1));
         var temp = imagesFlow[j];
@@ -56,7 +57,7 @@ var changeCard = function(clickEvent){
        if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")){
            count = count +2;
            firstCard = null;
-           if (count === 2){
+           if (count === 12){
 
                var overlay = document.createElement('div');
                overlay.className = "overlay";

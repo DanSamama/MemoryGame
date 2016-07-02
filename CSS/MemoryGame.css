@@ -1,7 +1,7 @@
 .card{
     border:1px black solid;
-    height: 30px;
-    width: 30px;
+    height: 200px;
+    width: 200px;
     display: inline-block;
     background-image: url("../images/HarryPotterBackGame.JPG");
     background-size: cover;
@@ -16,6 +16,13 @@
     position: absolute;
     top:0;
     left:0;
+}
+.overlay p{
+     color: white;
+     font-size: 2em;
+ }
+.overlay button{
+    font-size: 2em;
 }
 #bestBoardFrame{
     position: relative;

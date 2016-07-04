@@ -26,6 +26,8 @@
 }
 #bestBoardFrame{
     position: relative;
+    text-align: center;
+    transform: translateY(30%);
 }
 #replay{
     opacity:1;

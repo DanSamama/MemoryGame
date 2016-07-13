@@ -6,26 +6,27 @@
 }
 .card{
     border:1px black solid;
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 300px;
     display: inline-block;
     background-image: url("../images/HarryPotterBackGame.JPG");
     background-size: cover;
 
 }
 .overlay{
-    height: 100%;
-    width: 50%;
-    background-color: black;
-    opacity: 0.5;
+    height: 43%;
+    width: 96%;
+    background-image:url("../images/dumbledore.jpg");
+    background-size: cover;
     z-index: 1000;
     position: absolute;
-    top:0;
-    left:0;
+    top:29%;
+    left:2%;
 }
 .overlay p{
      color: white;
      font-size: 2em;
+    margin-top: 6%;
  }
 .overlay button{
     font-size: 2em;
@@ -33,11 +34,17 @@
 #bestBoardFrame{
     position: relative;
     text-align: center;
-    /*transform: translateY(30%);*/
+    transform: translateY(20%);
+
 }
 #replay{
     opacity:1;
+    margin-top: 3%;
 }
-#main-part{
-
+.ColumnCube {
+    margin-bottom: -5px;
+}
+body{
+    background-image: url("../images/wallpaper.jpg");
+    background-size: cover;
 }

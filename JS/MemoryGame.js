@@ -56,7 +56,7 @@ var changeCard = function(clickEvent){
         showCard(clickedCard);
     }
 
-    if(firstCard == null){
+    if(firstCard === null){
         firstCard = clickedCard;
     }else{
        if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")){
@@ -66,12 +66,12 @@ var changeCard = function(clickEvent){
 
                var overlay = document.createElement('div');
                overlay.className = "overlay";
-               overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>"
+               overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>";
                var boardFrame = document.getElementById("bestBoardFrame");
                boardFrame.appendChild(overlay);
                document.getElementById('replay').onclick = function(){
                    location.reload();
-               }
+               };
 
            }
 

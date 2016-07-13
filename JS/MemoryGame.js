@@ -10,6 +10,7 @@ var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./im
 
 var createBoard = function(){
     var boardFrame = document.getElementById('bestBoardFrame');
+    boardFrame.className = "BoardFrame col-lg-8";
     for (var i = 0 ; i<3 ; i++){
         var columnCube = document.createElement('div');
         columnCube.className = "ColumnCube";
@@ -25,16 +26,15 @@ var createBoard = function(){
     }
 };
 
-
 window.onload = function(){
-    var boardFrame = document.createElement('div');
-    boardFrame.id = "bestBoardFrame";
-    document.body.appendChild(boardFrame);
+    var gamePart = document.getElementById('main-part');
+    var boardFrame = document.getElementById('bestBoardFrame');
+    gamePart.appendChild(boardFrame);
     var imagesFlowLength = imagesFlow.length;
-    for(var i=0;i<imagesFlowLength;i++){
+    for(var i=0;i<imagesFlowLength;i++){ //doubling the array of cards to create pairs
         imagesFlow.push(imagesFlow[i]);
     }
-    for (var j = imagesFlow.length -1; j >= 0; j--){
+    for (var j = imagesFlow.length -1; j >= 0; j--){ //randomizing the cards
         var k = Math.floor(Math.random()*(j+1));
         var temp = imagesFlow[j];
         imagesFlow[j] = imagesFlow[k];
@@ -73,9 +73,6 @@ var changeCard = function(clickEvent){
                    location.reload();
                }
 
-
-
-               // alert("You have won");
            }
 
        }else{

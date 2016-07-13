@@ -1,3 +1,9 @@
+@font-face {font-family:"Harry Potter";src:url("../font/ParryHotter.ttf") format("ttf");font-weight:normal;font-style:normal;}
+
+.navbar-brand{
+    font-family: 'Harry Potter';
+    font-weight: bold;
+}
 .card{
     border:1px black solid;
     height: 200px;
@@ -27,8 +33,11 @@
 #bestBoardFrame{
     position: relative;
     text-align: center;
-    transform: translateY(30%);
+    /*transform: translateY(30%);*/
 }
 #replay{
     opacity:1;
+}
+#main-part{
+
 }

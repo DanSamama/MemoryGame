@@ -10,7 +10,7 @@ var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./im
 
 var createBoard = function(){
     var boardFrame = document.getElementById('bestBoardFrame');
-    boardFrame.className = "BoardFrame col-lg-8";
+    // boardFrame.className = "BoardFrame col-lg-8";
     for (var i = 0 ; i<3 ; i++){
         var columnCube = document.createElement('div');
         columnCube.className = "ColumnCube";
@@ -18,6 +18,7 @@ var createBoard = function(){
         for(var j=0 ; j<4 ; j++){
             var card = document.createElement('div');
             card.className = "card";
+            AddEventListenerToCard();
             card.setAttribute("data-img", imagesFlow[4*i+j]);
             columnCube.appendChild(card);
             card.addEventListener('click',changeCard);
@@ -27,9 +28,7 @@ var createBoard = function(){
 };
 
 window.onload = function(){
-    var gamePart = document.getElementById('main-part');
-    var boardFrame = document.getElementById('bestBoardFrame');
-    gamePart.appendChild(boardFrame);
+
     var imagesFlowLength = imagesFlow.length;
     for(var i=0;i<imagesFlowLength;i++){ //doubling the array of cards to create pairs
         imagesFlow.push(imagesFlow[i]);
@@ -52,49 +51,50 @@ var showCard = function(card){
 
 var changeCard = function(clickEvent){
     var clickedCard = clickEvent.target;
-    if (pause === false){
+    if (pause === false) {
         showCard(clickedCard);
-    }
-
-    if(firstCard === null){
-        firstCard = clickedCard;
-    }else{
-       if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")){
-           count = count +2;
-           firstCard = null;
-           if (count === 12){
-
-               var overlay = document.createElement('div');
-               overlay.className = "overlay";
-               overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>";
-               var boardFrame = document.getElementById("bestBoardFrame");
-               boardFrame.appendChild(overlay);
-               document.getElementById('replay').onclick = function(){
-                   location.reload();
-               };
-
-           }
-
-       }else{
-           pause=true;
-           setTimeout(function(){
-               clickedCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
-               firstCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
-               firstCard = null;
-               pause=false;
-           },1000);
-
-       }
 
 
+        if (firstCard === null) {
+            firstCard = clickedCard;
+        } else {
+            if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")) {
+                count = count + 2;
+                firstCard = null;
+                if (count === 12) {
+
+                    var overlay = document.createElement('div');
+                    overlay.className = "overlay";
+                    overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>";
+                    var boardFrame = document.getElementById("bestBoardFrame");
+                    boardFrame.appendChild(overlay);
+                    document.getElementById('replay').onclick = function () {
+                        location.reload();
+                    };
+
+                }
+
+            } else {
+                pause = true;
+                setTimeout(function () {
+                    clickedCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
+                    firstCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
+                    firstCard = null;
+                    pause = false;
+                }, 1000);
+
+            }
+
+
+        }
     }
 };
-
-var allCards = document.getElementsByClassName("card");
-for (var i=0;i<allCards.length;i++){
-    allCards[i].addEventListener('click',changeCard);
-
-}
+var AddEventListenerToCard = function(){
+    var allCards = document.getElementsByClassName("card");
+    for (var i=0;i<allCards.length;i++){
+        allCards[i].addEventListener('click',changeCard);
+    }
+};
 
 
 

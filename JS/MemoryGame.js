@@ -8,7 +8,7 @@ var pause = false;
 var imagesFlow = ["./images/Groucho-Marx-001.jpg","./images/Jew-Jitsu.jpg","./images/Jewerine.jpg","./images/jewish-rock.jpg","./images/jokejewish.jpg","./images/Yanouka.jpg"];
 
 
-var createBoard = function(){
+var createBoard = function(){ //Creating the board
     var boardFrame = document.getElementById('bestBoardFrame');
     // boardFrame.className = "BoardFrame col-lg-8";
     for (var i = 0 ; i<3 ; i++){
@@ -19,7 +19,7 @@ var createBoard = function(){
             var card = document.createElement('div');
             card.className = "card";
             AddEventListenerToCard();
-            card.setAttribute("data-img", imagesFlow[4*i+j]);
+            card.setAttribute("data-img", imagesFlow[4*i+j]); //Attributing a source to each card
             columnCube.appendChild(card);
             card.addEventListener('click',changeCard);
 
@@ -44,7 +44,6 @@ window.onload = function(){
 };
 
 
-
 var showCard = function(card){
     card.style.backgroundImage = "url(" + card.getAttribute("data-img")+")";
 };
@@ -55,17 +54,17 @@ var changeCard = function(clickEvent){
         showCard(clickedCard);
 
 
-        if (firstCard === null) {
+        if (firstCard === null) { //if the first card have not been discovered yet
             firstCard = clickedCard;
         } else {
-            if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")) {
+            if (firstCard.getAttribute("data-img") === clickedCard.getAttribute("data-img")) { //If both cards are the same
                 count = count + 2;
                 firstCard = null;
-                if (count === 12) {
+                if (count === 12) { // All the pair of cards have been discovered
 
                     var overlay = document.createElement('div');
                     overlay.className = "overlay";
-                    overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>";
+                    overlay.innerHTML = "<p>You won</p> <button id='replay'>Play Again</button>"; //Show the overlay to play a new game
                     var boardFrame = document.getElementById("bestBoardFrame");
                     boardFrame.appendChild(overlay);
                     document.getElementById('replay').onclick = function () {
@@ -76,7 +75,7 @@ var changeCard = function(clickEvent){
 
             } else {
                 pause = true;
-                setTimeout(function () {
+                setTimeout(function () { //Wait one second before flippng back the cards if non similar
                     clickedCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
                     firstCard.style.backgroundImage = "url(./images/HarryPotterBackGame.JPG)";
                     firstCard = null;

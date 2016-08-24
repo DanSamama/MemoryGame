@@ -14,13 +14,13 @@
 
 }
 .overlay{
-    height: 43%;
+    height: 59%;
     width: 96%;
     background-image:url("../images/dumbledore.jpg");
     background-size: cover;
     z-index: 1000;
     position: absolute;
-    top:29%;
+    top:21%;
     left:2%;
 }
 .overlay p{
